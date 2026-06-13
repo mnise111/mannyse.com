@@ -1,0 +1,374 @@
+/* =========================================================
+   Manny Se — personal brand
+   Design tokens
+   - paper : cool technical off-white (not cream)
+   - ink   : slate-black for type & dark passages
+   - teal  : the single "signal" accent — appears ONLY on
+             the rare facts and on links, encoding the thesis
+   Type roles
+   - Newsreader      : display / voice  (editorial serif)
+   - Hanken Grotesk  : body / reading   (clean grotesque)
+   - JetBrains Mono  : labels / readings (the measured, technical layer)
+   ========================================================= */
+
+:root {
+  --paper:   #F5F7F9;
+  --paper-2: #FFFFFF;
+  --ink:     #15181E;
+  --slate:   #565F6B;
+  --line:    #DCE1E7;
+  --accent:  #0E7490;
+  --accent-ink: #0A5566;
+
+  --maxw: 760px;
+  --gutter: clamp(20px, 6vw, 56px);
+
+  --step-eyebrow: 0.72rem;
+  --step-body:    1.0625rem;
+  --step-lead:    clamp(1.15rem, 1rem + 0.6vw, 1.35rem);
+  --step-h2:      clamp(1.35rem, 1.1rem + 1vw, 1.7rem);
+  --step-hero:    clamp(2rem, 1.2rem + 3.6vw, 3.5rem);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  font-size: var(--step-body);
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---- mono utility (labels, eyebrows, readings) ---- */
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: var(--step-eyebrow);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  font-weight: 500;
+}
+
+/* =========================================================
+   Top bar
+   ========================================================= */
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: clamp(20px, 4vw, 34px);
+  padding-bottom: clamp(20px, 4vw, 34px);
+}
+.topbar .name {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+.topbar nav {
+  display: flex;
+  gap: clamp(14px, 3vw, 26px);
+}
+.topbar nav a {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color .18s ease, border-color .18s ease;
+}
+.topbar nav a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero { padding-top: clamp(40px, 9vw, 96px); padding-bottom: clamp(48px, 10vw, 104px); }
+
+.hero .eyebrow { display: block; margin-bottom: clamp(22px, 4vw, 34px); }
+
+.hero h1 {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 400;
+  font-size: var(--step-hero);
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  margin: 0 0 clamp(22px, 3vw, 30px);
+  max-width: 19ch;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero .lead {
+  font-size: var(--step-lead);
+  color: var(--slate);
+  margin: 0;
+  max-width: 52ch;
+  line-height: 1.55;
+}
+.hero .lead strong { color: var(--ink); font-weight: 600; }
+
+/* =========================================================
+   Section scaffolding
+   ========================================================= */
+.section {
+  padding-top: clamp(40px, 7vw, 72px);
+  padding-bottom: clamp(40px, 7vw, 72px);
+  border-top: 1px solid var(--line);
+}
+.section > .eyebrow { display: block; margin-bottom: clamp(24px, 4vw, 36px); }
+
+.section h2 {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 400;
+  font-size: var(--step-h2);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6em;
+  max-width: 34ch;
+}
+.section p { margin: 0 0 1em; max-width: 60ch; }
+.section p:last-child { margin-bottom: 0; }
+
+/* =========================================================
+   Signals — the rare facts, set as instrument readings
+   ========================================================= */
+.signals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.signal {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px 28px;
+  padding: clamp(20px, 3.4vw, 28px) 0;
+  border-top: 1px solid var(--line);
+}
+.signal:first-child { border-top: 0; padding-top: 0; }
+
+.signal .label { align-self: start; }
+
+.signal .value {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.3rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--accent);
+  font-weight: 400;
+}
+.signal .gloss {
+  color: var(--slate);
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 56ch;
+}
+.signal .gloss strong { color: var(--ink); font-weight: 600; }
+
+@media (min-width: 620px) {
+  .signal {
+    grid-template-columns: 130px 1fr;
+    align-items: baseline;
+    gap: 4px 36px;
+  }
+  .signal .label { grid-row: 1 / span 2; padding-top: 0.55em; }
+  .signal .value { grid-column: 2; }
+  .signal .gloss { grid-column: 2; margin-top: 4px; }
+}
+
+/* =========================================================
+   Writing teaser link
+   ========================================================= */
+.textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding-bottom: 3px;
+  margin-top: 6px;
+  transition: border-color .18s ease, gap .18s ease;
+}
+.textlink:hover { border-color: var(--accent); gap: 0.75em; }
+
+/* inline prose links (scoped to running text only, so they don't
+   clash with .postlist, .backlink, .textlink or footer links) */
+.section p a,
+.post p a,
+.post li a,
+.post blockquote a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  transition: border-color .18s ease;
+}
+.section p a:hover,
+.post p a:hover,
+.post li a:hover,
+.post blockquote a:hover { border-color: var(--accent); }
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.foot {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(34px, 5vw, 48px);
+  padding-bottom: clamp(48px, 7vw, 72px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.foot .contacts { display: flex; flex-wrap: wrap; gap: 14px 24px; }
+.foot a {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: color .18s ease, border-color .18s ease;
+}
+.foot a:hover { color: var(--accent); border-color: var(--accent); }
+.foot .colophon { color: var(--slate); }
+
+/* =========================================================
+   Blog index + posts
+   ========================================================= */
+.postlist { list-style: none; margin: 0; padding: 0; }
+.postlist li { border-top: 1px solid var(--line); }
+.postlist li:first-child { border-top: 0; }
+.postlist a {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  padding: clamp(20px, 3vw, 26px) 0;
+  text-decoration: none;
+  color: var(--ink);
+}
+.postlist a:hover .ptitle { color: var(--accent); }
+.postlist .pdate { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+.postlist .ptitle {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.55rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  transition: color .18s ease;
+}
+.postlist .pexcerpt { color: var(--slate); font-size: 1rem; max-width: 60ch; }
+
+.empty {
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: clamp(22px, 4vw, 32px);
+  color: var(--slate);
+  background: var(--paper-2);
+}
+
+/* article body */
+.post { padding-top: clamp(28px, 5vw, 56px); padding-bottom: clamp(48px, 8vw, 88px); }
+.post .pdate { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); display: block; margin-bottom: 18px; }
+.post h1 {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 1.3rem + 2.4vw, 2.8rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0 0 clamp(24px, 4vw, 36px);
+  max-width: 22ch;
+}
+.post h2 {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.6rem);
+  letter-spacing: -0.01em;
+  margin: 1.8em 0 0.5em;
+}
+.post p, .post ul, .post ol { max-width: 64ch; margin: 0 0 1.15em; }
+.post ul, .post ol { padding-left: 1.2em; }
+.post li { margin-bottom: 0.4em; }
+.post blockquote {
+  margin: 1.4em 0;
+  padding-left: 1.1em;
+  border-left: 2px solid var(--accent);
+  color: var(--slate);
+  font-style: italic;
+}
+.post code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.86em;
+  background: #EDF0F3;
+  padding: 0.12em 0.4em;
+  border-radius: 3px;
+}
+.post pre {
+  background: var(--ink);
+  color: #E7EBF0;
+  padding: 18px 20px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  margin: 1.4em 0;
+  max-width: 100%;
+}
+.post pre code { background: none; padding: 0; color: inherit; }
+
+.backlink {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  text-decoration: none;
+  display: inline-block;
+  margin-top: clamp(32px, 5vw, 48px);
+  border: 0;
+}
+.backlink:hover { color: var(--accent); }
+
+/* =========================================================
+   Quiet load-in (disabled for reduced motion)
+   ========================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(12px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+  .reveal.d1 { animation-delay: .05s; }
+  .reveal.d2 { animation-delay: .14s; }
+  .reveal.d3 { animation-delay: .23s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+}
+
+/* focus visibility */
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
